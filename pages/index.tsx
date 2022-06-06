@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { getSession } from 'next-auth/react';
+import { getSession, GetSessionParams } from 'next-auth/react';
 import Center from '../components/Center';
 import Sidebar from '../components/Sidebar';
 import Player from '../components/Player';
@@ -24,7 +24,7 @@ export default function Home() {
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: GetSessionParams | undefined) {
   const session = await getSession(context);
 
   return {
